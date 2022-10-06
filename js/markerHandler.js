@@ -21,7 +21,7 @@ AFRAME.registerComponent("markerhandler", {
 
   askTableNumber: function() {
     var iconUrl = "https://raw.githubusercontent.com/whitehatjr/menu-card-app/main/hunger.png";
-    /* REPLACE COMMENTS TO ADD CODE HERE
+    /* REEMPLAZAR COMENTARIOS Y AÑADIR AQUÍ EL CÓDIGO
     
     
       
@@ -32,19 +32,19 @@ AFRAME.registerComponent("markerhandler", {
   },
 
   handleMarkerFound: function(dishes, markerId) {
-    // Getting today's day
+    // Obtener el día
     var todaysDate = new Date();
     var todaysDay = todaysDate.getDay();
     
-    // Sunday - Saturday : 0 - 6
+    // De domingo a sábado: 0 - 6
     var days = [
-      "sunday",
-      "monday",
-      "tuesday",
-      "wednesday",
-      "thursday",
-      "friday",
-      "saturday"
+      "Domingo",
+      "Lunes",
+      "Martes",
+      "Miércoles",
+      "Jueves",
+      "Viernes",
+      "Sábado"
     ];
 
     var dish = dishes.filter(dish => dish.id === markerId)[0];
@@ -53,44 +53,44 @@ AFRAME.registerComponent("markerhandler", {
       swal({
         icon: "warning",
         title: dish.dish_name.toUpperCase(),
-        text: "This dish is not available today!!!",
+        text: "¡Este platillo no está disponible hoy!",
         timer: 2500,
         buttons: false
       });
     } else {
-       // Changing Model scale to initial scale
+       // Cambiar el tamaño del modelo a su escala inicial
       var model = document.querySelector(`#model-${dish.id}`);
       model.setAttribute("position", dish.model_geometry.position);
       model.setAttribute("rotation", dish.model_geometry.rotation);
       model.setAttribute("scale", dish.model_geometry.scale);
 
-      //Update UI conent VISIBILITY of AR scene(MODEL , INGREDIENTS & PRICE)
+      //Actualizar el contenido UI de VISIBILIDAD de la escena AR (MODELO, INGREDIENTES Y PRECIO) 
 
-      /* REPLACE COMMENTS TO ADD CODE HERE
+      /* REEMPLAZAR COMENTARIOS Y AÑADIR AQUÍ EL CÓDIGO
     
     
       
       
       */
 
-      // Changing button div visibility
+      // Cambiar la visibilidad del botón div
       var buttonDiv = document.getElementById("button-div");
       buttonDiv.style.display = "flex";
 
       var ratingButton = document.getElementById("rating-button");
       var orderButtton = document.getElementById("order-button");
 
-      // Handling Click Events
+      // Usar eventos de clic
       ratingButton.addEventListener("click", function() {
         swal({
           icon: "warning",
-          title: "Rate Dish",
-          text: "Work In Progress"
+          title: "Calificar platillo",
+          text: "Procesando calificación"
         });
       });
 
       orderButtton.addEventListener("click", () => {
-        /*REPLACE COMMENTS TO ADD CODE HERE TO CALL handleOrder()
+        /*REEMPLAZAR COMENTARIOS Y AÑADIR AQUÍ EL CÓDIGO PARA LLAMAR A handleOrder()
         
         
         
@@ -98,8 +98,8 @@ AFRAME.registerComponent("markerhandler", {
 
         swal({
           icon: "https://i.imgur.com/4NZ6uLY.jpg",
-          title: "Thanks For Order !",
-          text: "Your order will serve soon on your table!",
+          title: "¡Gracias por tu orden!",
+          text: "¡Recibirás tu orden pronto!",
           timer: 2000,
           buttons: false
         });
@@ -107,7 +107,7 @@ AFRAME.registerComponent("markerhandler", {
     }
   },
   handleOrder: function(tNumber, dish) {
-    /* REPLACE COMMENTS TO ADD CODE HERE
+    /* REEMPLAZAR COMENTARIOS Y AÑADIR AQUÍ EL CÓDIGO
     
     
       
@@ -125,7 +125,7 @@ AFRAME.registerComponent("markerhandler", {
       });
   },
   handleMarkerLost: function() {
-    // Changing button div visibility
+    // Cambiar la visibilidad del botón div
     var buttonDiv = document.getElementById("button-div");
     buttonDiv.style.display = "none";
   }
